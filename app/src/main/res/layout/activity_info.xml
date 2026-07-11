@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="24dp">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tvVersion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Uygulama Sürümü:"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="16dp"
+            android:layout_marginTop="22dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="E-posta: mertmusayazar@gmail.com"
+            android:textSize="16sp"
+            android:layout_marginBottom="24dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="📖 Bu uygulama sıradan QR kod oluşturma ve taramanın yanı sıra dinamik QR kodlar oluşturmanızı ve taramanızı sağlar.\n\n▪️ Dinamik Metin ve Dinamik Tablo seçenekleri ile verilerinizi bulutta saklayabilirsiniz.\n▪️ Dinamik QR sayesinde sabit bir QR kod ile içerikte değişiklik yapabilirsiniz.\n▪️ Uygulamayı kullanan herkes dinamik QR'lara erişebilir ve içerik güncellemesi yapabilir."
+            android:textSize="16sp"/>
+
+        <Button
+            android:id="@+id/btnCloseInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Kapat"
+            android:layout_marginTop="32dp"
+            android:onClick="onCloseInfoClicked"/>
+    </LinearLayout>
+</ScrollView>

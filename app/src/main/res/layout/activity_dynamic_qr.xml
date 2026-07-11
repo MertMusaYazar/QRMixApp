@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- =================================== -->
+    <!-- 1) TabLayout: Dinamik Metin / Dinamik Tablo sekmeleri -->
+    <!--    - tabIndicatorHeight ile kalın alt çizgi,                      -->
+    <!--    - tabIndicatorColor ile başlangıçta kilitli renk (gri)          -->
+    <!-- =================================== -->
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        app:tabMode="fixed"
+        app:tabGravity="fill"
+        app:tabIndicatorHeight="4dp"
+        app:tabIndicatorColor="@color/indicator_locked">
+
+        <!-- Sekme 1: Dinamik Metin -->
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/tabText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Dinamik Metin"/>
+
+        <!-- Sekme 2: Dinamik Tablo -->
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/tabTable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Dinamik Tablo"/>
+    </com.google.android.material.tabs.TabLayout>
+
+    <!-- ========================================================================= -->
+    <!-- 2) “Geri Dön” butonu (solda) ve “Bilgi” butonu (sağda) aynı yatay satırda   -->
+    <!-- ========================================================================= -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:gravity="center_vertical">
+
+        <!-- A) Geri Dön Butonu: wrap_content olacak şekilde -->
+        <Button
+            android:id="@+id/btnBackAll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="← Geri Dön" />
+
+        <!-- B) Spacer: Butonlar arası boşluk bırakmak için weight kullanılıyor -->
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <!-- C) Bilgi Butonu: Mor dolu daire içinde beyaz “İ” harfi -->
+        <TextView
+            android:id="@+id/btnInfo"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:background="@drawable/bg_info_button"
+            android:gravity="center"
+            android:text="İ"
+            android:textColor="#FFFFFF"
+            android:textSize="24sp" />
+    </LinearLayout>
+
+    <!-- ============================================= -->
+    <!-- 3) İçerik Konteyneri: Dinamik Metin ve Dinamik Tablo -->
+    <!-- ============================================= -->
+    <FrameLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <!-- ===== Dinamik Metin Bölümü ===== -->
+        <ScrollView
+            android:id="@+id/scrollText"
+            android:visibility="visible"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="16dp">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal">
+
+                <!-- “Benzersiz ID” Girişi -->
+                <EditText
+                    android:id="@+id/etDynamicId"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Benzersiz ID"
+                    android:gravity="center" />
+
+                <!-- “QR içeriğini girin” Girişi -->
+                <EditText
+                    android:id="@+id/etDynamicContent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:hint="QR içeriğini girin"
+                    android:gravity="center" />
+
+                <!-- Kaydet & Oluştur Butonu -->
+                <Button
+                    android:id="@+id/btnSaveDynamicText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Kaydet ve Oluştur"
+                    android:layout_marginTop="16dp"
+                    android:layout_gravity="center_horizontal" />
+
+                <!-- 6 Haneli Şifre Girişi -->
+                <EditText
+                    android:id="@+id/etPasswordText"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:hint="6 haneli şifre"
+                    android:gravity="center"
+                    android:inputType="numberPassword"
+                    android:maxLength="6" />
+
+                <!-- QR Görüntüsü -->
+                <ImageView
+                    android:id="@+id/ivDynamicQrText"
+                    android:layout_width="300dp"
+                    android:layout_height="300dp"
+                    android:layout_marginTop="24dp"
+                    android:layout_gravity="center_horizontal" />
+            </LinearLayout>
+        </ScrollView>
+
+        <!-- ===== Dinamik Tablo Bölümü ===== -->
+        <ScrollView
+            android:id="@+id/scrollTable"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="16dp">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal">
+
+                <!-- “Benzersiz ID” Girişi -->
+                <EditText
+                    android:id="@+id/etTableId"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Benzersiz ID"
+                    android:gravity="center" />
+
+                <!-- Satır / Sütun Kontrolleri -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:layout_marginTop="12dp"
+                    android:padding="8dp">
+
+                    <!-- Satır Kontrol Grubu -->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:background="@drawable/bg_control_container"
+                        android:layout_marginEnd="16dp"
+                        android:paddingHorizontal="8dp">
+
+                        <ImageButton
+                            android:id="@+id/btnRemoveRow"
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:src="@drawable/ic_minus"
+                            android:background="?attr/selectableItemBackgroundBorderless"
+                            android:tint="#000000" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="32dp"
+                            android:layout_marginHorizontal="8dp"
+                            android:gravity="center"
+                            android:paddingHorizontal="12dp"
+                            android:text="Satır"
+                            android:textColor="#FFFFFF"
+                            android:background="@drawable/bg_control_label"
+                            android:textSize="16sp" />
+
+                        <ImageButton
+                            android:id="@+id/btnAddRow"
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:src="@drawable/ic_plus"
+                            android:background="?attr/selectableItemBackgroundBorderless"
+                            android:tint="#000000" />
+                    </LinearLayout>
+
+                    <!-- Sütun Kontrol Grubu -->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:background="@drawable/bg_control_container"
+                        android:paddingHorizontal="8dp">
+
+                        <ImageButton
+                            android:id="@+id/btnRemoveCol"
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:src="@drawable/ic_minus"
+                            android:background="?attr/selectableItemBackgroundBorderless"
+                            android:tint="#000000" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="32dp"
+                            android:layout_marginHorizontal="8dp"
+                            android:gravity="center"
+                            android:paddingHorizontal="12dp"
+                            android:text="Sütun"
+                            android:textColor="#FFFFFF"
+                            android:background="@drawable/bg_control_label"
+                            android:textSize="16sp" />
+
+                        <ImageButton
+                            android:id="@+id/btnAddCol"
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:src="@drawable/ic_plus"
+                            android:background="?attr/selectableItemBackgroundBorderless"
+                            android:tint="#000000" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- Dinamik Tablo Görünümü (TableLayout) -->
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp">
+                    <TableLayout
+                        android:id="@+id/tableLayout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:stretchColumns="*" />
+                </HorizontalScrollView>
+
+                <!-- Kaydet ve Oluştur Butonu -->
+                <Button
+                    android:id="@+id/btnSaveDynamicTable"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Kaydet ve Oluştur"
+                    android:layout_marginTop="16dp"
+                    android:layout_gravity="center_horizontal" />
+
+                <!-- 6 Haneli Şifre Girişi -->
+                <EditText
+                    android:id="@+id/etPasswordTable"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:hint="6 haneli şifre"
+                    android:gravity="center"
+                    android:inputType="numberPassword"
+                    android:maxLength="6" />
+
+                <!-- QR Görüntüsü -->
+                <ImageView
+                    android:id="@+id/ivDynamicQrTable"
+                    android:layout_width="300dp"
+                    android:layout_height="300dp"
+                    android:layout_marginTop="24dp"
+                    android:layout_gravity="center_horizontal" />
+            </LinearLayout>
+        </ScrollView>
+    </FrameLayout>
+</LinearLayout>
